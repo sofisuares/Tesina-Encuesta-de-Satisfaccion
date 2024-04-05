@@ -9,10 +9,10 @@
 ### Resumen:
 #Estimadores: proporción satisfechos, promotores y detractores (3 variables)
 #Dominios de estimación: 
-#DOM1= PLAN (A-B-C)
-#DOM2= NIVEL USO (menor a 0.5, menor a 1.5, mayor a 1.5)
-#DOM3= REGION (A-B-P-L-N-C)
-#DOM4= SEGMENTO (F-G)
+#DOM1= PLAN (A - B - C)
+#DOM2= NIVEL USO (Bajo - Medio - Alto)
+#DOM3= REGION (A - B - P - L - N - C)
+#DOM4= SEGMENTO (F - G)
 #DOM5= GLOBAL (Total)
 
 ### Carga de paquetes a usar
