@@ -9,10 +9,10 @@
 ### Resumen:
 #Estimadores: proporción satisfechos, promotores y detractores (3 variables)
 #Dominios de estimación: 
-#DOM1= PLAN (Integral-Superior-Selecta)
+#DOM1= PLAN (A-B-C)
 #DOM2= NIVEL USO (menor a 0.5, menor a 1.5, mayor a 1.5)
-#DOM3= REGION (AMBA-BSAS-PATAGONIA-LITORAL-NUCLEO-CENTRONOA)
-#DOM4= SEGMENTO (EMPRESA-DIRECTO)
+#DOM3= REGION (A-B-P-L-N-C)
+#DOM4= SEGMENTO (F-G)
 #DOM5= GLOBAL (Total)
 
 ### Carga de paquetes a usar
@@ -235,4 +235,4 @@ Muestra <- Marco4[Muestra4$ID_unit,]  #Para obtener el número de GF. De Marco1 
 ### Exportar muestra a excel
 #install.packages("openxlsx")
 library(openxlsx)
-write.xlsx(Muestra, "Muestra2SegmentosSinCerrado.xlsx")
+write.xlsx(Muestra, "Muestra2Segmentos3planes.xlsx")
