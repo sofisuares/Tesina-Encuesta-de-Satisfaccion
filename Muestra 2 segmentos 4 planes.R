@@ -11,7 +11,7 @@
 #Dominios de estimación: 
 #DOM1= PLAN (A - B - C - D)
 #DOM2= NIVEL USO (Bajo - Medio - Alto)
-#DOM3= REGION (A -B - P - L - N - C)
+#DOM3= REGION (A - B - P - L - N - C)
 #DOM4= SEGMENTO (F - G)
 #DOM5= GLOBAL (Total)
 
