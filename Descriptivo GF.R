@@ -20,6 +20,7 @@ library(ggplot2) #Para gráficos
 library(dplyr)
 library(scales) #Para gráfico de torta
 
+# Configuración de Working Directory
 setwd("C:/Users/ssuares/Desktop/Encuestas/Encuesta de satisfacción/Descriptivo/Descriptivo 25-10")
 
 # Definir colores personalizados paleta Avalian
