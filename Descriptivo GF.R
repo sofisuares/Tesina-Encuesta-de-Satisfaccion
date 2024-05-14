@@ -11,7 +11,7 @@
 # Región                                                                                                           #
 # Nivel de Uso                                                                                                     #
 # Se realizan gráficos de bastones (número de integrantes), gráficos de donas (credencial y segmento) y gráficos   #
-#  de barras (región y nivel de uso).                                                                              #
+# de barras (región y nivel de uso).                                                                               #
 #----------------------------------------------------------------------------------------------------------------- #
 
 # Carga de librerías
