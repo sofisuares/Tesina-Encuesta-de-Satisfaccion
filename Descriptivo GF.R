@@ -1,6 +1,18 @@
-################################################################################
-#################      DESCRIPTIVO GRUPOS FAMILIARES       #####################
-################################################################################
+# Última actualización: 14/05/2024
+# Autora: Sofía Suares
+
+#-------------------------------------------------- Descripcion -------------------------------------------------- #
+# Este programa se utiliza para realizar el análisis descriptivo de los grupos familiares que conforman la         #
+# población objetivo en la Encuesta de Satisfacción de Asociados Anual de la empresa Avalian.                      #
+# Las variables consideradas son:                                                                                  #
+# Número de integrantes en el grupo familiar                                                                       #
+# Credencial                                                                                                       #
+# Segmento: con cinco y dos categorías                                                                             #
+# Región                                                                                                           #
+# Nivel de Uso                                                                                                     #
+# Se realizan gráficos de bastones (número de integrantes), gráficos de donas (credencial y segmento) y gráficos   #
+#  de barras (región y nivel de uso).                                                                              #
+#----------------------------------------------------------------------------------------------------------------- #
 
 # Carga de librerías
 library(readxl) #Para cargar datos
