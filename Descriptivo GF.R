@@ -1,24 +1,24 @@
-# Última actualización: 14/05/2024
+# Última actualización: 18/05/2024
 # Autora: Sofía Suares
 
-#-------------------------------------------------- Descripcion -------------------------------------------------- #
+#-------------------------------------------------- Descripción -------------------------------------------------- #
 # Este programa se utiliza para realizar el análisis descriptivo de los grupos familiares que conforman la         #
-# población objetivo en la Encuesta de Satisfacción de Asociados Anual de la empresa Avalian.                      #
+# población objetivo en la Encuesta de Satisfacción de Asociados anual de la empresa Avalian.                      #
 # Las variables consideradas son:                                                                                  #
-# Número de integrantes en el grupo familiar                                                                       #
-# Credencial                                                                                                       #
-# Segmento: con cinco y dos categorías                                                                             #
-# Región                                                                                                           #
-# Nivel de Uso                                                                                                     #
+# - Número de integrantes en el grupo familiar                                                                     #
+# - Credencial                                                                                                     #
+# - Segmento: con cinco y dos categorías                                                                           #
+# - Región                                                                                                         #
+# - Nivel de Uso                                                                                                   #
 # Se realizan gráficos de bastones (número de integrantes), gráficos de donas (credencial y segmento) y gráficos   #
 # de barras (región y nivel de uso).                                                                               #
 #----------------------------------------------------------------------------------------------------------------- #
 
 # Carga de librerías
-library(readxl) #Para cargar datos
-library(ggplot2) #Para gráficos
-library(dplyr)
-library(scales) #Para gráfico de torta
+library(readxl) # Para cargar datos desde archivos de Excel
+library(ggplot2) # Para crear gráficos y visualizaciones
+library(dplyr) # Para manipulación y transformación de datos
+library(scales) # Para formateo de ejes y etiquetas en los gráficos de torta
 
 # Configuración de Working Directory
 setwd("C:/Users/ssuares/Desktop/Encuestas/Encuesta de satisfacción/Descriptivo/Descriptivo 25-10")
@@ -26,12 +26,12 @@ setwd("C:/Users/ssuares/Desktop/Encuestas/Encuesta de satisfacción/Descriptivo/
 # Definir colores personalizados paleta Avalian
 colores <- c("#00986b","darkgray", "#96D966", "#0D0D0D", "#93D9A4")
 
-### Variable: número de integrantes en el GF
-#Carga de datos
+#------------------------------- Variable: número de integrantes en el GF -------------------------------------- #
+# Carga de datos
 Integrantes_GF <- read_excel("Para armar el descriptivo.xlsx", 
                        sheet = "IntegrantesR")
 
-#Diagrama de Bastones para el % de GF
+# Diagrama de Bastones para el % de GF
 ggplot(Integrantes_GF) +
   aes(x = Integrantes, y = Porcentaje) +
   geom_bar(stat = "identity", width = 0.08, col = "#00986b", fill = "#00986b") +
@@ -46,8 +46,7 @@ ggplot(Integrantes_GF) +
         axis.title.x = element_text(color = "#434343"),
         axis.title.y = element_text(color = "#434343")) 
 
-
-### Variable: Credencial
+#-------------------------------------- Variable: Credencial ------------------------------------------------- # 
 # Carga de datos
 Credencial_GF <- read_excel("Para armar el descriptivo.xlsx", 
                              sheet = "CredencialR")
@@ -55,14 +54,14 @@ Credencial_GF <- read_excel("Para armar el descriptivo.xlsx",
 # Gráfico de dona
 ggplot(Credencial_GF, aes(x=2,y=Porcentaje, fill=Credencial, label = paste0(round(Porcentaje), "%")))+
   geom_bar(stat = "identity",color="white", width = 1)+
-  ##geom_text(aes(label=percent(Porcentaje)),
-    ##        position=position_stack(vjust=0.5),color="white",size=5)+
+  #geom_text(aes(label=percent(Porcentaje)),
+              #position=position_stack(vjust=0.5),color="white",size=5)+
   geom_text(aes(label = paste0(format(percent(Porcentaje),big.mark=".",decimal.mark = ","))), 
             position = position_stack(vjust = 0.5),color="white",size=4)+
-  coord_polar(theta = "y")+
+  coord_polar(theta = "y", direction=-1)+
   scale_fill_manual(values=colores)+
   theme_void()+
-  labs(title="Figura 2. Distribución de GF según credencial al 25/10/2023")+
+  #labs(title="Figura 2. Distribución de GF según credencial al 25/10/2023")+
   xlim(0.5,2.5)+
   theme(legend.position = "right",
         axis.line = element_blank(),
@@ -70,8 +69,8 @@ ggplot(Credencial_GF, aes(x=2,y=Porcentaje, fill=Credencial, label = paste0(roun
         axis.ticks = element_blank(),
         plot.title = element_text(hjust = 0.5, color = "#434343")) 
 
-
-### Variable: segmento (5 Categorías)
+#--------------------------------- Variable: Segmento 5 categorías ------------------------------------------- # 
+# Carga de datos
 Segmento_GF <- read_excel("Para armar el descriptivo.xlsx", 
                           sheet = "SegmentoR")
 
@@ -80,7 +79,7 @@ ggplot(Segmento_GF, aes(x=2,y=Porcentaje, fill=Segmento, label = paste0(round(Po
   geom_bar(stat = "identity",color="white", width = 1)+
   geom_text(aes(label = paste0(format(percent(Porcentaje),big.mark=".",decimal.mark = ","))), 
             position = position_stack(vjust = 0.5),color="white",size=3.5)+
-  coord_polar(theta = "y")+
+  coord_polar(theta = "y", direction=-1)+
   scale_fill_manual(values=colores)+
   theme_void()+
   labs(title="Figura 3. Distribución de GF según segmento (5 categorías) al 25/10/2023")+
@@ -92,7 +91,8 @@ ggplot(Segmento_GF, aes(x=2,y=Porcentaje, fill=Segmento, label = paste0(round(Po
         plot.title = element_text(hjust = 0.5, color = "#434343")) 
 
 
-### Variable: segmento (2 Categorías)
+#--------------------------------- Variable: Segmento 2 categorías ------------------------------------------- # 
+# Carga de datos
 Segmento_GF_2 <- read_excel("Para armar el descriptivo.xlsx", 
                           sheet = "SegmentoEncuestaR")
 
@@ -101,7 +101,7 @@ ggplot(Segmento_GF_2, aes(x=2,y=Porcentaje, fill=Segmento, label = paste0(round(
   geom_bar(stat = "identity",color="white", width = 1)+
   geom_text(aes(label = paste0(format(percent(Porcentaje),big.mark=".",decimal.mark = ","))), 
             position = position_stack(vjust = 0.5),color="white",size=3.5)+
-  coord_polar(theta = "y")+
+  coord_polar(theta = "y", direction=-1)+
   scale_fill_manual(values=colores)+
   theme_void()+
   labs(title="Figura 4. Distribución de GF según segmento (2 categorías) al 25/10/2023")+
@@ -113,10 +113,12 @@ ggplot(Segmento_GF_2, aes(x=2,y=Porcentaje, fill=Segmento, label = paste0(round(
         plot.title = element_text(hjust = 0.5, color = "#434343")) 
 
 
-### Variable: región
+#--------------------------------------- Variable: Región --------------------------------------------------- # 
+# Carga de datos
 Regiones_GF <- read_excel("Para armar el descriptivo.xlsx", 
                           sheet = "RegionesR")
 
+# Gráfico de barras
 ggplot(Regiones_GF) +
   aes(x = reorder(Regiones, Porcentaje), y = Porcentaje, label = scales::percent(Porcentaje)) +
   geom_bar(stat = "identity", width = 0.75, col = "#00986b", fill = "#00986b") +
@@ -133,13 +135,15 @@ ggplot(Regiones_GF) +
         axis.title.y = element_text(color = "#434343"))
 
 
-### Variable: nivel de uso
+#------------------------------------ Variable: Nivel de uso ------------------------------------------- # 
+# Carga de datos
 NivelUso_GF <- read_excel("Para armar el descriptivo.xlsx", 
                           sheet = "GastoR")
 
+# Establecer niveles Bajo, Medio, Alto del nivel de uso
 NivelUso_GF$Gasto <- factor(NivelUso_GF$Gasto, levels = c("Bajo", "Medio", "Alto"))
 
-# Gráfico
+# Gráfico de barras
 ggplot(NivelUso_GF) +
   aes(x = as.factor(Gasto), y = Porcentaje, label = scales::percent(Porcentaje)) +
   geom_bar(stat = "identity", width = 0.75, col = "#00986b", fill = "#00986b") +
