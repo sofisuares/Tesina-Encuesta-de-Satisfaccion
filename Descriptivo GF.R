@@ -33,18 +33,14 @@ Integrantes_GF <- read_excel("Para armar el descriptivo.xlsx",
 
 # Diagrama de Bastones para el % de GF
 ggplot(Integrantes_GF) +
-  aes(x = Integrantes, y = Porcentaje) +
+  aes(x = as.factor(Integrantes), y = Porcentaje) +
   geom_bar(stat = "identity", width = 0.08, col = "#00986b", fill = "#00986b") +
-  scale_x_continuous(breaks = 0:15) +
+  #scale_x_discrete(breaks = 0:15) +
   scale_y_continuous(labels = scales::percent_format(), limits = c(0, 0.6),
                      breaks = seq(0, 0.6, by = 0.05), expand = expansion(mult = c(0, 0.05))) +
   xlab("Número de integrantes en el GF") +
   ylab("Porcentaje de GF") +
-  labs(title="Figura 1. Distribución de GF según el número de integrantes en el GF al 25/10/2023")+
-  theme_classic() +
-  theme(plot.title = element_text(hjust = 0.5, color = "#434343"),
-        axis.title.x = element_text(color = "#434343"),
-        axis.title.y = element_text(color = "#434343")) 
+  theme_classic()   
 
 #-------------------------------------- Variable: Credencial ------------------------------------------------- # 
 # Carga de datos
