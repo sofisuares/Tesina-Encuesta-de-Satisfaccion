@@ -1,4 +1,4 @@
-# Última actualización: 19/05/2024
+# Última actualización: 02/07/2024
 # Autora: Sofía Suares
 
 #-------------------------------------------------- Descripción -------------------------------------------------- #
@@ -10,7 +10,7 @@
 # - Segmento: con cinco y dos categorías                                                                           #
 # - Región                                                                                                         #
 # - Nivel de Uso                                                                                                   #
-# Se realizan gráficos de bastones (número de integrantes), gráficos de donas (credencial y segmento) y gráficos   #
+# Se realizan gráficos de bastones (número de integrantes), gráficos de sectores (credencial y segmento) y gráficos#
 # de barras (región y nivel de uso).                                                                               #
 #----------------------------------------------------------------------------------------------------------------- #
 
@@ -47,38 +47,34 @@ ggplot(Integrantes_GF) +
 Credencial_GF <- read_excel("Para armar el descriptivo.xlsx", 
                             sheet = "CredencialR")
 
-# Gráfico de dona
-ggplot(Credencial_GF, aes(x=2,y=Porcentaje, fill=Credencial, label = paste0(round(Porcentaje), "%")))+
+# Gráfico de sectores
+ggplot(Credencial_GF, aes(x="",y=Porcentaje, fill=Credencial, label = paste0(format(percent(Porcentaje), big.mark = ".", decimal.mark = ","))))+
   geom_bar(stat = "identity",color="white", width = 1)+
-  ##geom_text(aes(label=percent(Porcentaje)),
-  ##        position=position_stack(vjust=0.5),color="white",size=5)+
   geom_text(aes(label = paste0(format(percent(Porcentaje),big.mark=".",decimal.mark = ","))), 
             position = position_stack(vjust = 0.5),color="white",size=3)+
   coord_polar(theta = "y", direction=-1)+
   scale_fill_manual(values=colores)+
   theme_void()+
-  xlim(0.5,2.5)+
   theme(legend.position = "right",
         axis.line = element_blank(),
         axis.text = element_blank(),
         axis.ticks = element_blank(),
-        plot.title = element_text(hjust = 0.5, color = "#434343")) 
+        plot.title = element_text(hjust = 0.5, color = "#434343"))
 
 #--------------------------------- Variable: Segmento 5 categorías ------------------------------------------- # 
 # Carga de datos
 Segmento_GF <- read_excel("Para armar el descriptivo.xlsx", 
                           sheet = "SegmentoR")
 
-# Gráfico de dona
-ggplot(Segmento_GF, aes(x=2,y=Porcentaje, fill=Segmento, label = paste0(round(Porcentaje), "%")))+
+# Gráfico de sectores
+ggplot(Segmento_GF, aes(x="",y=Porcentaje, fill=Segmento, label = paste0(round(Porcentaje), "%")))+
   geom_bar(stat = "identity",color="white", width = 1)+
   geom_text(aes(label = paste0(format(percent(Porcentaje),big.mark=".",decimal.mark = ","))), 
-            position = position_stack(vjust = 0.5),color="white",size=3.5)+
+            position = position_stack(vjust = 0.5),color="white",size=3)+
   coord_polar(theta = "y",direction=-1)+
   scale_fill_manual(values=colores)+
   theme_void()+
   # labs(title="Figura 3. Distribución de GF según segmento (5 categorías) al 25/10/2023")+
-  xlim(0.5,2.5)+
   theme(legend.position = "right",
         axis.line = element_blank(),
         axis.text = element_blank(),
@@ -91,14 +87,13 @@ ggplot(Segmento_GF, aes(x=2,y=Porcentaje, fill=Segmento, label = paste0(round(Po
 Segmento_GF_2 <- read_excel("Para armar el descriptivo.xlsx", 
                             sheet = "SegmentoEncuestaR")
 
-# Gráfico de dona
-ggplot(Segmento_GF_2, aes(x=2, y=Porcentaje, fill=Segmento, label = paste0(round(Porcentaje * 100, 1), "%"))) +
+# Gráfico de sectores
+ggplot(Segmento_GF_2, aes(x="", y=Porcentaje, fill=Segmento, label = paste0(round(Porcentaje * 100, 1), "%"))) +
   geom_bar(stat = "identity", color="white", width = 1) +
   geom_text(position = position_stack(vjust = 0.5), color="white", size=3.5) +
   coord_polar(theta = "y", direction=-1) +
   scale_fill_manual(values=colores) +
   theme_void() +
-  xlim(0.5, 2.5) +
   theme(legend.position = "right",
         axis.line = element_blank(),
         axis.text = element_blank(),
@@ -145,4 +140,3 @@ ggplot(NivelUso_GF) +
   theme(plot.title = element_text(hjust = 0.5, color = "#434343"),
         axis.title.x = element_text(color = "#434343"),
         axis.title.y = element_text(color = "#434343"))
-
